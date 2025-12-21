@@ -3,6 +3,6 @@ export interface ProductModel {
   name: string;
   categoryId: number;
   price: number;
-  quintity: number;
+  quantity: number;
   createdAt: Date
 }
