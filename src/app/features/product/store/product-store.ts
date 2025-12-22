@@ -27,6 +27,16 @@ export class ProductStore {
     })
   }
 
+  readonly pageSize = computed(() => {
+    const { pageSize } = this._state();
+    return pageSize;
+  })
+
+  readonly page = computed(() => {
+    const { page } = this._state();
+    return page;
+  })
+
   readonly visibleProducts = computed(() => {
     const { data, page, pageSize, sortBy, sortOrder, searchQuery, categoriesSelected } = this._state();
 

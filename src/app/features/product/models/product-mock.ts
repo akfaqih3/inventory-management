@@ -114,7 +114,7 @@ export const productMock: ProductModel[] = [
   },
   {
     id: 12,
-    name: "Apple iMac 27\"",
+    name: "sam",
     categoryId: 1,
     price: 3999,
     quantity: 1,

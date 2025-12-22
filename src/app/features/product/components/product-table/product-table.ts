@@ -1,6 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { ProductStore } from '../../store/product-store';
 import { DatePipe } from '@angular/common';
+import { ProductTableToolBar } from "../product-table-tool-bar/product-table-tool-bar";
+import { ProductTableSearch } from "../product-table-search/product-table-search";
+import { ProductTableFilter } from "../product-table-filter/product-table-filter";
 
 interface ProductTableHeader {
   label: string;
@@ -8,7 +11,7 @@ interface ProductTableHeader {
 
 @Component({
   selector: 'app-product-table',
-  imports: [DatePipe],
+  imports: [DatePipe, ProductTableToolBar, ProductTableSearch, ProductTableFilter],
   templateUrl: './product-table.html',
   styleUrl: './product-table.css',
 })
@@ -16,6 +19,7 @@ export class ProductTable {
   private _productStore = inject(ProductStore);
 
   products = this._productStore.visibleProducts;
+
 
   items: ProductTableHeader[] = [
     {
@@ -38,18 +42,12 @@ export class ProductTable {
     }
   ]
 
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
-
-  ngOnDestroy(): void {
-  }
-
   editProduct(productId: number) {
     console.log(productId);
+  }
+
+  searchInputChanged(e:any){
+    this._productStore.updateSearch(e);
   }
 
 }
