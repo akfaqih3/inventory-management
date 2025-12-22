@@ -1,7 +1,13 @@
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
   <div class="p-4 flex items-center justify-between space-x-4">
-    <app-product-table-tool-bar></app-product-table-tool-bar>
+    <app-product-table-tool-bar
+    (pageSizeSelected)="setPageSize($event)"
+    (pageSelected)="setPageIndex($event)"
+    [pageSize]="pageSize()"
+    [pageCount]="pageCount()"
+    [currentPage]="currentPage()"
+    ></app-product-table-tool-bar>
   </div>
   <div class="p-4 flex items-center justify-between space-x-4">
     <app-product-table-search (searchOutput)="searchInputChanged($event)"></app-product-table-search>

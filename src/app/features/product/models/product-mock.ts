@@ -20,7 +20,7 @@ export const categoryMock : CategoryModel[] = [
   },
   {
     id: 5,
-    name: "Smart Watch"
+    name: "phone"
   },
 ]
 export const productMock: ProductModel[] = [
@@ -114,10 +114,212 @@ export const productMock: ProductModel[] = [
   },
   {
     id: 12,
-    name: "sam",
+    name: "samsung",
+    categoryId: 5,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+
+  {
+    id: 13,
+    name: "apple",
     categoryId: 1,
     price: 3999,
     quantity: 1,
     createdAt: new Date("2022-01-01T00:00:00.000Z")
   },
+  {
+    id: 14,
+    name: "huawei",
+    categoryId: 5,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 15,
+    name: "samsung",
+    categoryId: 5,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 16,
+    name: "apple",
+    categoryId: 1,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 17,
+    name: "huawei",
+    categoryId: 5,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 18,
+    name: "galaxy",
+    categoryId: 5,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 19,
+    name: "hp",
+    categoryId: 2,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 20,
+    name: "samsung",
+    categoryId: 5,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 21,
+    name: "apple",
+    categoryId: 1,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 22,
+    name: "huawei",
+    categoryId: 5,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 23,
+    name: "samsung",
+    categoryId: 5,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 24,
+    name: "apple",
+    categoryId: 1,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 25,
+    name: "huawei",
+    categoryId: 5,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 26,
+    name: "samsung",
+    categoryId: 5,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 27,
+    name: "apple",
+    categoryId: 1,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 28,
+    name: "huawei",
+    categoryId: 5,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 29,
+    name: "samsung",
+    categoryId: 5,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 30,
+    name: "apple",
+    categoryId: 1,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 31,
+    name: "huawei",
+    categoryId: 5,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 32,
+    name: "samsung",
+    categoryId: 5,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 33,
+    name: "apple",
+    categoryId: 1,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 34,
+    name: "huawei",
+    categoryId: 5,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 35,
+    name: "samsung",
+    categoryId: 5,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 36,
+    name: "apple",
+    categoryId: 1,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+  {
+    id: 37,
+    name: "huawei",
+    categoryId: 5,
+    price: 3999,
+    quantity: 1,
+    createdAt: new Date("2022-01-01T00:00:00.000Z")
+  },
+
 ]

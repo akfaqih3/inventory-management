@@ -23,6 +23,11 @@ export class ProductTable {
 
   products = this._productStore.visibleProducts;
 
+  currentPage = this._productStore.page;
+  pageSize = this._productStore.pageSize;
+
+  pageCount = this._productStore.pageCount;
+
 
   items: ProductTableHeader[] = [
     {
@@ -55,6 +60,14 @@ export class ProductTable {
 
   selectCategory(categoryId:number){
     this._productStore.toggleCategory(categoryId);
+  }
+
+  setPageSize(pageSize:number){
+    this._productStore.setPageSize(pageSize);
+  }
+
+  setPageIndex(pageIndex:number){
+    this._productStore.setPage(pageIndex);
   }
 
 }
