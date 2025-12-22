@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { required } from '@angular/forms/signals';
+import { CategoryModel } from './../../models/category-model';
+import { Component, Input, input, output, Output } from '@angular/core';
 
 @Component({
   selector: 'app-product-table-filter',
@@ -7,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './product-table-filter.css',
 })
 export class ProductTableFilter {
+
+  categories = input<CategoryModel[]>();
+
+  categorySelected = output<number>();
+
+  selectCategory(categoryId:number){
+    this.categorySelected.emit(categoryId);
+  }
 
 }

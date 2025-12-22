@@ -8,7 +8,7 @@ import { Component, output } from '@angular/core';
 })
 export class ProductTableSearch {
 
-  searchOutput= output();
+  searchOutput= output<string>();
 
   searchChanged(e:any){
     this.searchOutput.emit(e.target.value);

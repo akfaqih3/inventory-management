@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common';
 import { ProductTableToolBar } from "../product-table-tool-bar/product-table-tool-bar";
 import { ProductTableSearch } from "../product-table-search/product-table-search";
 import { ProductTableFilter } from "../product-table-filter/product-table-filter";
+import { categoryMock } from '../../models/product-mock';
 
 interface ProductTableHeader {
   label: string;
@@ -17,6 +18,8 @@ interface ProductTableHeader {
 })
 export class ProductTable {
   private _productStore = inject(ProductStore);
+
+  mockCategories = categoryMock;
 
   products = this._productStore.visibleProducts;
 
@@ -48,6 +51,10 @@ export class ProductTable {
 
   searchInputChanged(e:any){
     this._productStore.updateSearch(e);
+  }
+
+  selectCategory(categoryId:number){
+    this._productStore.toggleCategory(categoryId);
   }
 
 }

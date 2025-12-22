@@ -1,7 +1,7 @@
 import { CategoryModel } from "./category-model";
 import { ProductModel } from "./product-model";
 
-const categoryMock : CategoryModel[] = [
+export const categoryMock : CategoryModel[] = [
   {
     id: 1,
     name: "Laptop"

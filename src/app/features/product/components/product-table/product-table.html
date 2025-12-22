@@ -5,7 +5,11 @@
   </div>
   <div class="p-4 flex items-center justify-between space-x-4">
     <app-product-table-search (searchOutput)="searchInputChanged($event)"></app-product-table-search>
-    <app-product-table-filter></app-product-table-filter>
+    <app-product-table-filter
+    [categories]="mockCategories"
+    (categorySelected)="selectCategory($event)"
+    >
+  </app-product-table-filter>
 
   </div>
   <table class="w-full text-sm text-left rtl:text-right text-body">
