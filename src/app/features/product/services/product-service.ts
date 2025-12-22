@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ProductState } from '../store/product-state';
+import { productMock } from '../models/product-mock';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,16 @@ export class ProductService {
 
   getState(): ProductState | null{
     const state = localStorage.getItem(this.STORAGE_KEY);
-    return state ? JSON.parse(state) : null;
+    return state ? JSON.parse(state) : {
+      data: productMock,
+      searchQuery: "",
+      categoriesSelected: [],
+      sortBy: "name",
+      sortOrder: "asc",
+      page: 1,
+      pageSize: 10
+    };
+
   }
 
 }
