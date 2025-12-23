@@ -1,64 +1,77 @@
-
-<div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
-  <div class="p-4 flex items-center justify-between space-x-4">
-    <app-product-table-tool-bar
-    (pageSizeSelected)="setPageSize($event)"
-    (pageSelected)="setPageIndex($event)"
-    [pageSize]="pageSize()"
-    [pageCount]="pageCount()"
-    [currentPage]="currentPage()"
-    ></app-product-table-tool-bar>
+<div class="relative overflow-hidden bg-white">
+  <div class="p-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-default">
+    <div class="w-full sm:w-auto flex-1">
+      <app-product-table-search (searchOutput)="searchInputChanged($event)"></app-product-table-search>
+    </div>
+    <div class="w-full sm:w-auto flex items-center gap-4">
+      <app-product-table-filter [categories]="mockCategories"
+        (categorySelected)="selectCategory($event)"
+        [categoriesSelected]="categoriesSelected()"
+        ></app-product-table-filter>
+    </div>
   </div>
-  <div class="p-4 flex items-center justify-between space-x-4">
-    <app-product-table-search (searchOutput)="searchInputChanged($event)"></app-product-table-search>
-    <app-product-table-filter
-    [categories]="mockCategories"
-    (categorySelected)="selectCategory($event)"
-    >
-  </app-product-table-filter>
 
-  </div>
-  <table class="w-full text-sm text-left rtl:text-right text-body">
-      <thead class="text-sm text-body bg-neutral-secondary-medium border-b border-t border-default-medium">
-          <tr>
-             @for(item of items; track $index) {
-                <th scope="col" class="px-6 py-3 font-medium">
-                  <div class="flex items-center">
-                      <span class="flex-1 whitespace-nowrap">{{item.label}}</span>
-                      <a href="#">
-                          <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/></svg>
-                      </a>
-                  </div>
-              </th>
-             }
-          </tr>
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-body">
+      <thead
+        class="text-xs font-semibold text-heading uppercase tracking-wider bg-neutral-secondary-medium border-b border-default">
+        <tr>
+          @for(item of items; track $index) {
+          <th scope="col" class="px-6 py-4">
+            <div class="flex items-center gap-1 cursor-pointer hover:text-fg-brand transition-colors">
+              {{item.label}}
+              <svg class="w-4 h-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+              </svg>
+            </div>
+          </th>
+          }
+          <th scope="col" class="px-6 py-4 text-right">Actions</th>
+        </tr>
       </thead>
-      <tbody>
-
-          @for(product of products(); track product.id) {
-          <tr class="bg-neutral-primary-soft border-b border-default hover:bg-neutral-secondary-medium">
-
-            <td class="px-6 py-4">
-              {{product.name}}
-            </td>
-            <td class="px-6 py-4">
-                {{product.categoryId}}
-            </td>
-            <td class="px-6 py-4">
-                {{product.price}}
-            </td>
-            <td class="px-6 py-4">
-                {{product.quantity}}
-            </td>
-            <td class="px-6 py-4">
-                {{ product.createdAt | date:'medium' }}
-            </td>
-            <td class="px-6 py-4">
-                <a (click)="editProduct(product.id)" class="font-medium text-fg-brand hover:underline">Edit</a>
-            </td>
-
-          </tr>
+      <tbody class="divide-y divide-default">
+        @for(product of products(); track product.id) {
+        <tr class="hover:bg-neutral-secondary-medium transition-colors duration-150 group">
+          <td class="px-6 py-4 font-medium text-heading">
+            {{product.name}}
+          </td>
+          <td class="px-6 py-4">
+            <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-neutral-tertiary text-body">
+              {{product.categoryId}}
+            </span>
+          </td>
+          <td class="px-6 py-4 font-semibold text-heading">
+            ${{product.price}}
+          </td>
+          <td class="px-6 py-4">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full" [class.bg-green-500]="product.quantity > 10"
+                [class.bg-yellow-500]="product.quantity <= 10 && product.quantity > 0"
+                [class.bg-red-500]="product.quantity === 0"></div>
+              {{product.quantity}}
+            </div>
+          </td>
+          <td class="px-6 py-4 text-xs">
+            {{ product.createdAt | date:'mediumDate' }}
+          </td>
+          <td class="px-6 py-4 text-right">
+            <button (click)="editProduct(product.id)"
+              class="inline-flex items-center cursor-pointer gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-fg-brand hover:bg-fg-brand/10 transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+              Edit
+            </button>
+          </td>
+        </tr>
         }
       </tbody>
-  </table>
+    </table>
+  </div>
+
+  <!-- product table toolbar component -->
+  <app-product-table-tool-bar (pageSizeSelected)="setPageSize($event)" (pageSelected)="setPageIndex($event)"
+    [pageSize]="pageSize()" [pageCount]="pageCount()" [currentPage]="currentPage()"></app-product-table-tool-bar>
 </div>

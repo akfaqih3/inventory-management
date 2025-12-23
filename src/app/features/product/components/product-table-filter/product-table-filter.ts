@@ -12,6 +12,8 @@ export class ProductTableFilter {
 
   categories = input<CategoryModel[]>();
 
+  categoriesSelected = input<number[]>();
+
   categorySelected = output<number>();
 
   selectCategory(categoryId:number){

@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 
 interface PageSelectionOption {
   label: string;
@@ -32,11 +32,6 @@ export class ProductTableToolBar {
     }
   ]
 
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    console.log(this.pageCount());
-  }
 
   pageSizeSelected = output<number>();
   pageSelected = output<number>();
@@ -45,7 +40,9 @@ export class ProductTableToolBar {
 
   currentPage = input<number>();
 
-  pageSize = input<number>();
+  pageSize = input<number>(10);
+
+  productCount= this.pageCount() * this.pageSize()
 
   get pageArray(){
     return Array.from({ length: this.pageCount() }, (_, i) => i + 1);

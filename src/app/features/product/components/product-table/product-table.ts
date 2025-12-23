@@ -28,6 +28,8 @@ export class ProductTable {
 
   pageCount = this._productStore.pageCount;
 
+  categoriesSelected = this._productStore.categoreisSelected;
+
 
   items: ProductTableHeader[] = [
     {
@@ -44,9 +46,6 @@ export class ProductTable {
     },
     {
       label: "Created At"
-    },
-    {
-      label: "Actions"
     }
   ]
 

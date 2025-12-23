@@ -1,4 +1,21 @@
-<hr class="my-2">
+<div class="max-w-7xl mx-auto">
+  <header class="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <div>
+      <h1 class="text-3xl font-bold text-heading tracking-tight">Products</h1>
+      <p class="text-body mt-1">Manage your inventory and track stock levels.</p>
+    </div>
 
-<app-product-table>
-</app-product-table>
+    <div class="flex items-center gap-3">
+      <button
+        class="px-4 py-2 cursor-pointer text-sm font-semibold text-white bg-fg-brand rounded-xl hover:bg-fg-brand-hover shadow-lg shadow-fg-brand/20 transition-all duration-200 flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+        Add Product
+      </button>
+    </div>
+  </header>
+  <div class="bg-white rounded-2xl shadow-sm border border-default overflow-hidden">
+    <app-product-table></app-product-table>
+  </div>
+</div>
