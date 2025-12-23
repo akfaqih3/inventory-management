@@ -47,6 +47,10 @@ export class ProductStore {
     return categoriesSelected;
   })
 
+   productEditable(productId: number): ProductModel|undefined{
+    return this._state().data.find(product => product.id === productId);
+  }
+
   readonly visibleProducts = computed(() => {
     const { data, page, pageSize, sortBy, sortOrder, searchQuery, categoriesSelected } = this._state();
 

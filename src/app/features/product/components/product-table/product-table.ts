@@ -1,10 +1,11 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, output } from '@angular/core';
 import { ProductStore } from '../../store/product-store';
 import { DatePipe } from '@angular/common';
 import { ProductTableToolBar } from "../product-table-tool-bar/product-table-tool-bar";
 import { ProductTableSearch } from "../product-table-search/product-table-search";
 import { ProductTableFilter } from "../product-table-filter/product-table-filter";
 import { categoryMock } from '../../models/product-mock';
+import { ProductModel } from '../../models/product-model';
 
 interface ProductTableHeader {
   label: string;
@@ -30,6 +31,8 @@ export class ProductTable {
 
   categoriesSelected = this._productStore.categoreisSelected;
 
+  productEditable = output<ProductModel>();
+
 
   items: ProductTableHeader[] = [
     {
@@ -50,7 +53,10 @@ export class ProductTable {
   ]
 
   editProduct(productId: number) {
-    console.log(productId);
+    const product = this._productStore.productEditable(productId);
+    if(product){
+      this.productEditable.emit(product);
+    }
   }
 
   searchInputChanged(e:any){
