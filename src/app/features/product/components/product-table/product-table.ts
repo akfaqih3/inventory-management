@@ -23,7 +23,7 @@ export class ProductTable {
 
   mockCategories = categoryMock;
 
-  products = this._productStore.visibleProducts;
+  products = this._productStore.pagenatedProducts;
 
   currentPage = this._productStore.page;
   pageSize = this._productStore.pageSize;

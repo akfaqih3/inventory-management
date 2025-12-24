@@ -38,8 +38,8 @@ export class ProductStore {
   })
 
   readonly pageCount = computed(() => {
-    const { data, pageSize } = this._state();
-    return Math.ceil(data.length / pageSize);
+    const {  pageSize } = this._state();
+    return Math.ceil(this.visibleProducts().length / pageSize);
   })
 
   readonly categoreisSelected = computed(() => {
@@ -62,7 +62,7 @@ export class ProductStore {
   }
 
   readonly visibleProducts = computed(() => {
-    const { data, page, pageSize, sortBy, sortOrder, searchQuery, categoriesSelected } = this._state();
+    const { data, sortBy, sortOrder, searchQuery, categoriesSelected } = this._state();
 
     const search = searchQuery.trim().toLowerCase();
     return data.filter(product => {
@@ -87,8 +87,13 @@ export class ProductStore {
         default:
           return 0;
       }
-    }).slice((page - 1) * pageSize, page * pageSize);
+    });
   })
+
+  readonly pagenatedProducts = computed(()=>{
+      const {page,pageSize} = this._state();
+      return this.visibleProducts().slice((page - 1) * pageSize, page * pageSize);
+    })
 
   updateSearch(query: string) {
     this._state.update(state => ({ ...state, searchQuery: query }));
@@ -141,6 +146,11 @@ export class ProductStore {
 
   setPageSize(pageSize: number) {
     this._state.update(state => ({ ...state, pageSize }));
+    const {page} =this._state()
+    if (page > this.pageCount()){
+      this.setPage(this.pageCount())
+    }
+
   }
 
   clear() {
