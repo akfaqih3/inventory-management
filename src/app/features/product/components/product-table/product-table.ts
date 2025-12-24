@@ -9,6 +9,7 @@ import { ProductModel } from '../../models/product-model';
 
 interface ProductTableHeader {
   label: string;
+  key: keyof ProductModel;
 }
 
 @Component({
@@ -31,52 +32,60 @@ export class ProductTable {
 
   categoriesSelected = this._productStore.categoreisSelected;
 
+  activeSortBy = this._productStore.sortBy;
+  activeSortOrder = this._productStore.sortOrder;
+
   productEditable = output<ProductModel>();
 
 
   items: ProductTableHeader[] = [
     {
-      label: "Name"
+      label: "Name",
+      key: "name"
     },
     {
-      label: "category"
+      label: "category",
+      key: "categoryId"
     },
     {
-      label: "Price"
+      label: "Price",
+      key: "price"
     },
     {
-      label: "Quantity"
+      label: "Quantity",
+      key: "quantity"
     },
     {
-      label: "Created At"
+      label: "Created At",
+      key: "createdAt"
     }
   ]
 
   editProduct(productId: number) {
     const product = this._productStore.productEditable(productId);
-    if(product){
+    if (product) {
       this.productEditable.emit(product);
     }
   }
 
-  searchInputChanged(e:any){
+  searchInputChanged(e: any) {
     this._productStore.updateSearch(e);
   }
 
-  selectCategory(categoryId:number){
+  selectCategory(categoryId: number) {
     this._productStore.toggleCategory(categoryId);
   }
 
-  setPageSize(pageSize:number){
+  setPageSize(pageSize: number) {
     this._productStore.setPageSize(pageSize);
   }
 
-  setPageIndex(pageIndex:number){
+  setPageIndex(pageIndex: number) {
     this._productStore.setPage(pageIndex);
   }
 
-  sortBy(sortBy:string ){
-    this._productStore.updateSort(sortBy as keyof ProductModel);
+  sortBy(key: keyof ProductModel) {
+    this._productStore.updateSort(key);
   }
 
 }

@@ -22,7 +22,7 @@ export class ProductStore {
   )
 
   constructor() {
-    effect( () => {
+    effect(() => {
       this._productService.saveState(this._state())
     })
   }
@@ -47,7 +47,17 @@ export class ProductStore {
     return categoriesSelected;
   })
 
-   productEditable(productId: number): ProductModel|undefined{
+  readonly sortBy = computed(() => {
+    const { sortBy } = this._state();
+    return sortBy;
+  })
+
+  readonly sortOrder = computed(() => {
+    const { sortOrder } = this._state();
+    return sortOrder;
+  })
+
+  productEditable(productId: number): ProductModel | undefined {
     return this._state().data.find(product => product.id === productId);
   }
 
@@ -62,15 +72,18 @@ export class ProductStore {
 
       return matchesCategory && matchesSearch;
     }).sort((a, b) => {
-      switch (sortBy.toLocaleLowerCase()) {
+      const order = sortOrder === "asc" ? 1 : -1;
+      switch (sortBy) {
         case "name":
-          return sortOrder === "asc" ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
-        case "category":
-          return sortOrder === "asc" ? a.categoryId - b.categoryId : b.categoryId - a.categoryId;
+          return order * a.name.localeCompare(b.name);
+        case "categoryId":
+          return order * (a.categoryId - b.categoryId);
         case "price":
-          return sortOrder === "asc" ? a.price - b.price : b.price - a.price;
+          return order * (a.price - b.price);
         case "quantity":
-          return sortOrder === "asc" ? a.quantity - b.quantity : b.quantity - a.quantity;
+          return order * (a.quantity - b.quantity);
+        case "createdAt":
+          return order * (new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
         default:
           return 0;
       }
@@ -81,7 +94,7 @@ export class ProductStore {
     this._state.update(state => ({ ...state, searchQuery: query }));
   }
 
-  updateSort(_sortBy: keyof ProductModel){
+  updateSort(_sortBy: keyof ProductModel) {
     this._state.update(
       state => (
         {
@@ -93,23 +106,23 @@ export class ProductStore {
     )
   }
 
-  setPage(page: number){
+  setPage(page: number) {
     this._state.update(state => ({ ...state, page }));
   }
 
-  addProduct(product: ProductModel){
+  addProduct(product: ProductModel) {
     this._state.update(state => ({ ...state, data: [...state.data, product] }));
   }
 
-  updateProduct(product: ProductModel){
+  updateProduct(product: ProductModel) {
     this._state.update(state => ({ ...state, data: state.data.map(p => p.id === product.id ? product : p) }));
   }
 
-  removeProduct(productId: number){
+  removeProduct(productId: number) {
     this._state.update(state => ({ ...state, data: state.data.filter(p => p.id !== productId) }));
   }
 
-  toggleCategory(categoryId: number){
+  toggleCategory(categoryId: number) {
     this._state.update(state => ({
       ...state,
       categoriesSelected: state.categoriesSelected.includes(categoryId)
@@ -118,19 +131,19 @@ export class ProductStore {
     }));
   }
 
-  clearCategories(){
+  clearCategories() {
     this._state.update(state => ({ ...state, categoriesSelected: [] }));
   }
 
-  clearSearch(){
+  clearSearch() {
     this._state.update(state => ({ ...state, searchQuery: "" }));
   }
 
-  setPageSize(pageSize: number){
+  setPageSize(pageSize: number) {
     this._state.update(state => ({ ...state, pageSize }));
   }
 
-  clear(){
+  clear() {
     this._state.update(() => ({
       data: [],
       searchQuery: "",
