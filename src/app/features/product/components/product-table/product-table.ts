@@ -75,4 +75,8 @@ export class ProductTable {
     this._productStore.setPage(pageIndex);
   }
 
+  sortBy(sortBy:string ){
+    this._productStore.updateSort(sortBy as keyof ProductModel);
+  }
+
 }

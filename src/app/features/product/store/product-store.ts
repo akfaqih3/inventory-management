@@ -63,9 +63,11 @@ export class ProductStore {
 
       return matchesCategory && matchesSearch;
     }).sort((a, b) => {
-      switch (sortBy) {
+      switch (sortBy.toLocaleLowerCase()) {
         case "name":
           return sortOrder === "asc" ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
+        case "category":
+          return sortOrder === "asc" ? a.categoryId - b.categoryId : b.categoryId - a.categoryId;
         case "price":
           return sortOrder === "asc" ? a.price - b.price : b.price - a.price;
         case "quantity":
