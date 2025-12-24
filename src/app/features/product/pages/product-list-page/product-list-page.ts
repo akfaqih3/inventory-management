@@ -3,6 +3,7 @@ import { ProductTable } from "../../components/product-table/product-table";
 import { ProductForm } from "../../forms/product-form/product-form";
 import { ProductStore } from '../../store/product-store';
 import { ProductModel } from '../../models/product-model';
+import { ToastService } from '../../../../core/services/toast.service';
 
 @Component({
   selector: 'app-product-list-page',
@@ -12,33 +13,36 @@ import { ProductModel } from '../../models/product-model';
 })
 export class ProductListPage {
   private _productStore = inject(ProductStore);
+  private _toastService = inject(ToastService);
 
   isFormOpen = signal<boolean>(false);
 
-  productEditable = signal<ProductModel|undefined>(undefined);
+  productEditable = signal<ProductModel | undefined>(undefined);
 
 
-  openForm(){
+  openForm() {
     this.isFormOpen.set(true);
   }
 
-  closeForm(){
+  closeForm() {
     this.isFormOpen.set(false);
   }
 
-  editProduct(product: ProductModel){
+  editProduct(product: ProductModel) {
     this.productEditable.set(product);
     this.isFormOpen.set(true);
   }
 
 
-  addProduct(product: ProductModel){
+  addProduct(product: ProductModel) {
     this._productStore.addProduct(product);
+    this._toastService.show('Product added successfully!');
   }
 
-  save(product:ProductModel){
+  save(product: ProductModel) {
     this._productStore.updateProduct(product);
     this.productEditable.set(undefined);
+    this._toastService.show('Product updated successfully!');
   }
 
 }
