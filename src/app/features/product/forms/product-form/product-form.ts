@@ -80,7 +80,7 @@ export class ProductForm {
     return {
       id: this.productEditable()?.id ?? this.generateId(),
       name: productForm.value.name,
-      categoryId: productForm.value.category,
+      categoryId: Number(productForm.value.category),
       price: productForm.value.price,
       quantity: productForm.value.quantity,
       createdAt: this.productEditable()?.createdAt ?? new Date( Date.now() )

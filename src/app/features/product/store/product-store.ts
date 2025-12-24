@@ -55,7 +55,6 @@ export class ProductStore {
     const { data, page, pageSize, sortBy, sortOrder, searchQuery, categoriesSelected } = this._state();
 
     const search = searchQuery.trim().toLowerCase();
-
     return data.filter(product => {
 
       const matchesCategory = categoriesSelected.length === 0 || categoriesSelected.includes(product.categoryId);

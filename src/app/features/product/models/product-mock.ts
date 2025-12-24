@@ -305,21 +305,5 @@ export const productMock: ProductModel[] = [
     quantity: 1,
     createdAt: new Date("2022-01-01T00:00:00.000Z")
   },
-  {
-    id: 36,
-    name: "apple",
-    categoryId: 1,
-    price: 3999,
-    quantity: 1,
-    createdAt: new Date("2022-01-01T00:00:00.000Z")
-  },
-  {
-    id: 37,
-    name: "huawei",
-    categoryId: 5,
-    price: 3999,
-    quantity: 1,
-    createdAt: new Date("2022-01-01T00:00:00.000Z")
-  },
 
 ]
