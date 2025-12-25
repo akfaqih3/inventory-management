@@ -1,0 +1,85 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "close": "Close",
+    "search": "Search",
+    "filter": "Filter",
+    "actions": "Actions",
+    "required": "Required",
+    "success": "Success",
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Info"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "products": "Products",
+    "inventory": "Inventory"
+  },
+  "product": {
+    "title": "Products",
+    "subtitle": "Manage your inventory and track stock levels",
+    "addProduct": "Add Product",
+    "editProduct": "Edit Product",
+    "addNewProduct": "Add New Product",
+    "productAdded": "Product added successfully!",
+    "productUpdated": "Product updated successfully!",
+    "fillDetails": "Fill in the details below to update your inventory",
+    "searchProducts": "Search products...",
+    "showingProducts": "Showing {count} products",
+    "createProduct": "Create Product",
+    "saveChanges": "Save Changes",
+    "form": {
+      "productName": "Product Name",
+      "category": "Category",
+      "price": "Price ($)",
+      "quantity": "Quantity",
+      "selectCategory": "Select a category",
+      "placeholder": {
+        "productName": "e.g. Wireless Headphones",
+        "price": "0.00",
+        "quantity": "0"
+      },
+      "validation": {
+        "nameRequired": "Name is required",
+        "nameMinLength": "Name must be at least 3 characters",
+        "categoryRequired": "Category is required",
+        "priceRequired": "Price is required",
+        "priceMin": "Min $1",
+        "quantityRequired": "Quantity is required",
+        "quantityMin": "Min 0"
+      }
+    },
+    "table": {
+      "headers": {
+        "name": "Name",
+        "category": "Category",
+        "price": "Price",
+        "quantity": "Quantity",
+        "createdAt": "Created At"
+      },
+      "pagination": {
+        "perPage": "per page",
+        "10perPage": "10 per page",
+        "25perPage": "25 per page",
+        "50perPage": "50 per page",
+        "100perPage": "100 per page"
+      },
+      "filter": {
+        "categories": "Categories"
+      }
+    }
+  },
+
+  "sidebar": {
+    "openSidebar": "Open sidebar",
+    "copyright": "Copyright © 2025 Inventory Management. All rights reserved."
+  },
+  "app": {
+    "title": "Inventory Management"
+  }
+}

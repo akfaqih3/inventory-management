@@ -1,0 +1,124 @@
+<div
+  class="relative bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden transform transition-all animate-in fade-in zoom-in duration-300">
+  <!-- Header -->
+  <div class="px-8 py-6 bg-neutral-secondary-medium border-b border-default flex justify-between items-center">
+    <div>
+      <h3 class="text-xl font-bold text-heading">
+        @if(productEditable()) { {{'product.editProduct' | translate}} } @else { {{'product.addNewProduct' | translate}} }
+      </h3>
+      <p class="text-xs text-body mt-1">{{'product.fillDetails' | translate}}</p>
+    </div>
+    <button (click)="close()"
+      class="p-2 rounded-full hover:bg-neutral-tertiary text-body transition-colors cursor-pointer">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Form -->
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="p-8">
+    <div class="space-y-6">
+      <!-- Name Field -->
+      <div class="space-y-2">
+        <label class="text-sm font-bold text-heading flex items-center gap-1">
+          {{'product.form.productName' | translate}}
+          <span class="text-red-500">*</span>
+        </label>
+        <input type="text" formControlName="name"
+          class="block w-full px-4 py-3 bg-white border border-default text-heading text-sm rounded-xl focus:ring-4 focus:ring-fg-brand/10 focus:border-fg-brand transition-all duration-200 placeholder:text-slate-400"
+          placeholder="{{'product.form.placeholder.productName' | translate}}">
+        @if(productName.touched && productName.invalid) {
+        <div class="flex items-center gap-1.5 mt-1 text-red-500">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="text-xs font-medium">
+            @if(productName.getError('required')) { {{'product.form.validation.nameRequired' | translate}} }
+            @else if(productName.getError('minlength')) { {{'product.form.validation.nameMinLength' | translate}} }
+          </span>
+        </div>
+        }
+      </div>
+
+      <!-- Category Field -->
+      <div class="space-y-2">
+        <label class="text-sm font-bold text-heading flex items-center gap-1">
+          {{'product.form.category' | translate}}
+          <span class="text-red-500">*</span>
+        </label>
+        <div class="relative">
+          <select formControlName="category"
+            class="appearance-none block w-full px-4 py-3 bg-white border border-default text-heading text-sm rounded-xl focus:ring-4 focus:ring-fg-brand/10 focus:border-fg-brand transition-all duration-200 cursor-pointer">
+            <option value="" disabled>{{'product.form.selectCategory' | translate}}</option>
+            @for(category of categories; track category.id) {
+            <option [value]="category.id">{{category.name}}</option>
+            }
+          </select>
+          <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-body">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+        @if(productCategory.touched && productCategory.invalid) {
+        <div class="flex items-center gap-1.5 mt-1 text-red-500">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="text-xs font-medium">{{'product.form.validation.categoryRequired' | translate}}</span>
+        </div>
+        }
+      </div>
+
+      <!-- Price & Quantity Row -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="space-y-2">
+          <label class="text-sm font-bold text-heading">{{'product.form.price' | translate}}</label>
+          <input type="number" formControlName="price"
+            class="block w-full px-4 py-3 bg-white border border-default text-heading text-sm rounded-xl focus:ring-4 focus:ring-fg-brand/10 focus:border-fg-brand transition-all duration-200"
+            placeholder="{{'product.form.placeholder.price' | translate}}">
+          @if(productPrice.touched && productPrice.invalid) {
+          <div class="flex items-center gap-1.5 mt-1 text-red-500">
+            <span class="text-xs font-medium">
+              @if(productPrice.getError('required')) { {{'product.form.validation.priceRequired' | translate}} }
+              @else if(productPrice.getError('min')) { {{'product.form.validation.priceMin' | translate}} }
+            </span>
+          </div>
+          }
+        </div>
+        <div class="space-y-2">
+          <label class="text-sm font-bold text-heading">{{'product.form.quantity' | translate}}</label>
+          <input type="number" formControlName="quantity"
+            class="block w-full px-4 py-3 bg-white border border-default text-heading text-sm rounded-xl focus:ring-4 focus:ring-fg-brand/10 focus:border-fg-brand transition-all duration-200"
+            placeholder="{{'product.form.placeholder.quantity' | translate}}">
+          @if(productQuantity.touched && productQuantity.invalid) {
+          <div class="flex items-center gap-1.5 mt-1 text-red-500">
+            <span class="text-xs font-medium">
+              @if(productQuantity.getError('required')) { {{'product.form.validation.quantityRequired' | translate}} }
+              @else if(productQuantity.getError('min')) { {{'product.form.validation.quantityMin' | translate}} }
+            </span>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Actions -->
+    <div class="mt-10 flex items-center justify-end gap-3">
+      <button type="button" (click)="close()"
+        class="px-6 py-2.5 text-sm font-bold text-body bg-white border border-default rounded-xl hover:bg-neutral-secondary-medium transition-all duration-200 cursor-pointer">
+        {{'common.cancel' | translate}}
+      </button>
+      <button type="submit" [disabled]="productForm.invalid"
+        class="px-8 py-2.5 text-sm font-bold text-white bg-fg-brand rounded-xl hover:bg-fg-brand-hover shadow-lg shadow-fg-brand/20 transition-all duration-200 disabled:opacity-50 disabled:shadow-none cursor-pointer flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        @if(productEditable()) { {{'product.saveChanges' | translate}} } @else { {{'product.createProduct' | translate}} }
+      </button>
+    </div>
+  </form>
+</div>

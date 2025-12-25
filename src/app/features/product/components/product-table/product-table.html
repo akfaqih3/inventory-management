@@ -1,0 +1,75 @@
+<div class="relative overflow-hidden bg-white">
+  <div class="p-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-default">
+    <div class="w-full sm:w-auto flex-1">
+      <app-product-table-search (searchOutput)="searchInputChanged($event)"></app-product-table-search>
+    </div>
+    <div class="w-full sm:w-auto flex items-center gap-4">
+      <app-product-table-filter [categories]="mockCategories" (categorySelected)="selectCategory($event)"
+        [categoriesSelected]="categoriesSelected()"></app-product-table-filter>
+    </div>
+  </div>
+
+  <div class="overflow-x-auto">
+    <div class="overflow-x-auto"> <table class="w-full table-fixed text-sm text-left rtl:text-right text-body">
+
+      <colgroup>
+        <col class="w-1/4"> <col class="w-32">  <col class="w-24">  <col class="w-24">  <col class="w-32">  <col class="w-28">  </colgroup>
+
+      <thead class="text-xs font-semibold text-heading uppercase tracking-wider bg-neutral-secondary-medium border-b border-default">
+        <tr>
+          @for(item of items; track $index) {
+          <th scope="col" class="px-6 py-4 transition-colors duration-200"
+            [class.sort-active]="activeSortBy() === item.key">
+            <div (click)="sortBy(item.key)"
+              class="flex items-center gap-2 cursor-pointer group select-none transition-all duration-200"
+              [class.text-fg-brand]="activeSortBy() === item.key">
+              <span class="font-semibold uppercase tracking-wider truncate">{{item.label | translate}}</span>
+              </div>
+          </th>
+          }
+          <th scope="col" class="px-6 py-4 text-right w-28">{{'common.actions' | translate}}</th>
+        </tr>
+      </thead>
+
+      <tbody class="divide-y divide-default">
+        @for(product of products(); track product.id) {
+        <tr class="hover:bg-neutral-secondary-medium transition-colors duration-150 group">
+          <td class="px-6 py-4 font-medium text-heading truncate overflow-hidden" [title]="product.name">
+            {{product.name}}
+          </td>
+          <td class="px-6 py-4 truncate">
+            <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-neutral-tertiary text-body">
+              {{product.categoryId}}
+            </span>
+          </td>
+          <td class="px-6 py-4 font-semibold text-heading">
+            ${{product.price}}
+          </td>
+          <td class="px-6 py-4">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full" [class.bg-green-500]="product.quantity > 10"
+                [class.bg-yellow-500]="product.quantity <= 10 && product.quantity > 0"
+                [class.bg-red-500]="product.quantity === 0"></div>
+              {{product.quantity}}
+            </div>
+          </td>
+          <td class="px-6 py-4 text-xs whitespace-nowrap">
+            {{ product.createdAt | date:'mediumDate' }}
+          </td>
+          <td class="px-6 py-4 text-right">
+            <button (click)="editProduct(product.id)"
+              class="inline-flex items-center cursor-pointer gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-fg-brand hover:bg-fg-brand/10 transition-colors">
+              {{'common.edit' | translate}}
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  </div>
+
+  <!-- product table toolbar component -->
+  <app-product-table-tool-bar (pageSizeSelected)="setPageSize($event)" (pageSelected)="setPageIndex($event)"
+    [pageSize]="pageSize()" [pageCount]="pageCount()" [currentPage]="currentPage()"></app-product-table-tool-bar>
+</div>
