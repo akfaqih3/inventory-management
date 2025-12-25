@@ -14,20 +14,29 @@
 
   <!-- Dropdown menu -->
   <div
-    class="absolute right-0 mt-2 w-48 bg-white border border-default rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
-    <div class="p-2">
-      <p class="px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider">{{'product.table.filter.categories' | translate}}</p>
-      <ul class="space-y-1">
-        @for(category of categories(); track category.id) {
-        <li>
-          <button (click)="selectCategory(category.id)" aria-label="Select category"
-            class="w-full cursor-pointer text-left px-3 py-2 text-sm text-body rounded-lg hover:bg-neutral-secondary-medium hover:text-fg-brand transition-colors">
-            <input type="checkbox" [checked]="categoriesSelected()?.includes(category.id)" aria-label="Select category">
-            {{category.name}}
-          </button>
-        </li>
-        }
-      </ul>
-    </div>
+  class="absolute mt-2 min-w-48 max-w-xs w-max bg-white border border-default rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden"
+  [class.right-0]="!isRTL()"
+  [class.left-0]="isRTL()">
+
+  <div class="p-2" [dir]="isRTL() ? 'rtl' : 'ltr'">
+    <p class="px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider text-start">
+      {{'product.table.filter.categories' | translate}}
+    </p>
+
+    <ul class="space-y-1">
+      @for(category of categories(); track category.id) {
+      <li>
+        <button (click)="selectCategory(category.id)"
+                aria-label="Select category"
+                class="w-full cursor-pointer flex items-center gap-2 px-3 py-2 text-sm text-body rounded-lg hover:bg-neutral-secondary-medium hover:text-fg-brand transition-colors whitespace-nowrap text-start">
+
+          <input type="checkbox" [checked]="categoriesSelected()?.includes(category.id)" class="shrink-0">
+          <span>{{category.name}}</span>
+
+        </button>
+      </li>
+      }
+    </ul>
   </div>
+</div>
 </div>
