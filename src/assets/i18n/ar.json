@@ -1,0 +1,85 @@
+{
+  "common": {
+    "loading": "جاري التحميل...",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "close": "إغلاق",
+    "search": "بحث",
+    "filter": "تصفية",
+    "actions": "الإجراءات",
+    "required": "مطلوب",
+    "success": "نجح",
+    "error": "خطأ",
+    "warning": "تحذير",
+    "info": "معلومات"
+  },
+  "navigation": {
+    "dashboard": "لوحة التحكم",
+    "products": "المنتجات",
+    "inventory": "المخزون"
+  },
+  "product": {
+    "title": "المنتجات",
+    "subtitle": "إدارة المخزون وتتبع مستويات المخزون",
+    "addProduct": "إضافة منتج",
+    "editProduct": "تعديل المنتج",
+    "addNewProduct": "إضافة منتج جديد",
+    "productAdded": "تم إضافة المنتج بنجاح!",
+    "productUpdated": "تم تحديث المنتج بنجاح!",
+    "fillDetails": "املأ التفاصيل أدناه لتحديث مخزونك",
+    "searchProducts": "البحث في المنتجات...",
+    "showingProducts": "عرض {count} منتج",
+    "createProduct": "إنشاء منتج",
+    "saveChanges": "حفظ التغييرات",
+    "form": {
+      "productName": "اسم المنتج",
+      "category": "الفئة",
+      "price": "السعر ($)",
+      "quantity": "الكمية",
+      "selectCategory": "اختر فئة",
+      "placeholder": {
+        "productName": "مثال: سماعات لاسلكية",
+        "price": "0.00",
+        "quantity": "0"
+      },
+      "validation": {
+        "nameRequired": "الاسم مطلوب",
+        "nameMinLength": "يجب أن يكون الاسم 3 أحرف على الأقل",
+        "categoryRequired": "الفئة مطلوبة",
+        "priceRequired": "السعر مطلوب",
+        "priceMin": "الحد الأدنى $1",
+        "quantityRequired": "الكمية مطلوبة",
+        "quantityMin": "الحد الأدنى 0"
+      }
+    },
+    "table": {
+      "headers": {
+        "name": "الاسم",
+        "category": "الفئة",
+        "price": "السعر",
+        "quantity": "الكمية",
+        "createdAt": "تاريخ الإنشاء"
+      },
+      "pagination": {
+        "perPage": "لكل صفحة",
+        "10perPage": "10 لكل صفحة",
+        "25perPage": "25 لكل صفحة",
+        "50perPage": "50 لكل صفحة",
+        "100perPage": "100 لكل صفحة"
+      },
+      "filter": {
+        "categories": "الفئات"
+      }
+    }
+  },
+
+  "sidebar": {
+    "openSidebar": "فتح الشريط الجانبي",
+    "copyright": "حقوق الطبع والنشر © 2025 إدارة المخزون. جميع الحقوق محفوظة."
+  },
+  "app": {
+    "title": "إدارة المخزون"
+  }
+}

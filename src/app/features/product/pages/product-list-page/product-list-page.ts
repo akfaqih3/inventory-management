@@ -4,10 +4,11 @@ import { ProductForm } from "../../forms/product-form/product-form";
 import { ProductStore } from '../../store/product-store';
 import { ProductModel } from '../../models/product-model';
 import { ToastService } from '../../../../core/services/toast.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-list-page',
-  imports: [ProductTable, ProductForm],
+  imports: [ProductTable, ProductForm,TranslateModule],
   templateUrl: './product-list-page.html',
   styleUrl: './product-list-page.css',
 })
