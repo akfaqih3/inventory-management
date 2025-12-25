@@ -10,9 +10,12 @@
   </div>
 
   <div class="overflow-x-auto">
-    <table class="w-full text-sm text-left rtl:text-right text-body">
-      <thead
-        class="text-xs font-semibold text-heading uppercase tracking-wider bg-neutral-secondary-medium border-b border-default">
+    <div class="overflow-x-auto"> <table class="w-full table-fixed text-sm text-left rtl:text-right text-body">
+
+      <colgroup>
+        <col class="w-1/4"> <col class="w-32">  <col class="w-24">  <col class="w-24">  <col class="w-32">  <col class="w-28">  </colgroup>
+
+      <thead class="text-xs font-semibold text-heading uppercase tracking-wider bg-neutral-secondary-medium border-b border-default">
         <tr>
           @for(item of items; track $index) {
           <th scope="col" class="px-6 py-4 transition-colors duration-200"
@@ -20,42 +23,21 @@
             <div (click)="sortBy(item.key)"
               class="flex items-center gap-2 cursor-pointer group select-none transition-all duration-200"
               [class.text-fg-brand]="activeSortBy() === item.key">
-              <span class="font-semibold uppercase tracking-wider">{{item.label | translate}}</span>
-
-              <div
-                class="flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                [class.opacity-100]="activeSortBy() === item.key">
-                @if (activeSortBy() === item.key) {
-                @if (activeSortOrder() === 'asc') {
-                <svg class="w-3.5 h-3.5 text-fg-brand animate-in" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7" />
-                </svg>
-                } @else {
-                <svg class="w-3.5 h-3.5 text-fg-brand animate-in" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-                </svg>
-                }
-                } @else {
-                <svg class="w-3.5 h-3.5 text-body/30 group-hover:text-body/50" fill="none" stroke="currentColor"
-                  viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                    d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
-                </svg>
-                }
+              <span class="font-semibold uppercase tracking-wider truncate">{{item.label | translate}}</span>
               </div>
-            </div>
           </th>
           }
-          <th scope="col" class="px-6 py-4 text-right">{{'common.actions' | translate}}</th>
+          <th scope="col" class="px-6 py-4 text-right w-28">{{'common.actions' | translate}}</th>
         </tr>
       </thead>
+
       <tbody class="divide-y divide-default">
         @for(product of products(); track product.id) {
         <tr class="hover:bg-neutral-secondary-medium transition-colors duration-150 group">
-          <td class="px-6 py-4 font-medium text-heading">
+          <td class="px-6 py-4 font-medium text-heading truncate overflow-hidden" [title]="product.name">
             {{product.name}}
           </td>
-          <td class="px-6 py-4">
+          <td class="px-6 py-4 truncate">
             <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-neutral-tertiary text-body">
               {{product.categoryId}}
             </span>
@@ -71,16 +53,12 @@
               {{product.quantity}}
             </div>
           </td>
-          <td class="px-6 py-4 text-xs">
+          <td class="px-6 py-4 text-xs whitespace-nowrap">
             {{ product.createdAt | date:'mediumDate' }}
           </td>
           <td class="px-6 py-4 text-right">
             <button (click)="editProduct(product.id)"
               class="inline-flex items-center cursor-pointer gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-fg-brand hover:bg-fg-brand/10 transition-colors">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-              </svg>
               {{'common.edit' | translate}}
             </button>
           </td>
@@ -88,6 +66,7 @@
         }
       </tbody>
     </table>
+  </div>
   </div>
 
   <!-- product table toolbar component -->
