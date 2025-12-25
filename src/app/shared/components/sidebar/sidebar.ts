@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface SidebarItem {
   label: string;
@@ -8,7 +9,7 @@ interface SidebarItem {
 
 @Component({
   selector: 'app-sidebar',
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css',
 })
@@ -16,12 +17,12 @@ export class Sidebar {
 
   items: SidebarItem[] = [
     {
-      label: "Dashboard",
+      label: "navigation.dashboard",
       icon: "home",
       route: "/dashboard"
     },
     {
-      label: "Products",
+      label: "navigation.products",
       icon: "store",
       route: "/products"
     },

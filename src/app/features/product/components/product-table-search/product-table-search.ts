@@ -1,8 +1,9 @@
 import { Component, output, viewChild, ElementRef, Signal } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-table-search',
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './product-table-search.html',
   styleUrl: './product-table-search.css',
 })

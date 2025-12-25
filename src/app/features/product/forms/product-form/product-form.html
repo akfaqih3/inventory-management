@@ -4,9 +4,9 @@
   <div class="px-8 py-6 bg-neutral-secondary-medium border-b border-default flex justify-between items-center">
     <div>
       <h3 class="text-xl font-bold text-heading">
-        @if(productEditable()) { Edit Product } @else { Add New Product }
+        @if(productEditable()) { {{'product.editProduct' | translate}} } @else { {{'product.addNewProduct' | translate}} }
       </h3>
-      <p class="text-xs text-body mt-1">Fill in the details below to update your inventory.</p>
+      <p class="text-xs text-body mt-1">{{'product.fillDetails' | translate}}</p>
     </div>
     <button (click)="close()"
       class="p-2 rounded-full hover:bg-neutral-tertiary text-body transition-colors cursor-pointer">
@@ -22,12 +22,12 @@
       <!-- Name Field -->
       <div class="space-y-2">
         <label class="text-sm font-bold text-heading flex items-center gap-1">
-          Product Name
+          {{'product.form.productName' | translate}}
           <span class="text-red-500">*</span>
         </label>
         <input type="text" formControlName="name"
           class="block w-full px-4 py-3 bg-white border border-default text-heading text-sm rounded-xl focus:ring-4 focus:ring-fg-brand/10 focus:border-fg-brand transition-all duration-200 placeholder:text-slate-400"
-          placeholder="e.g. Wireless Headphones">
+          placeholder="{{'product.form.placeholder.productName' | translate}}">
         @if(productName.touched && productName.invalid) {
         <div class="flex items-center gap-1.5 mt-1 text-red-500">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -35,8 +35,8 @@
               d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span class="text-xs font-medium">
-            @if(productName.getError('required')) { Name is required }
-            @else if(productName.getError('minlength')) { Name must be at least 3 characters }
+            @if(productName.getError('required')) { {{'product.form.validation.nameRequired' | translate}} }
+            @else if(productName.getError('minlength')) { {{'product.form.validation.nameMinLength' | translate}} }
           </span>
         </div>
         }
@@ -45,13 +45,13 @@
       <!-- Category Field -->
       <div class="space-y-2">
         <label class="text-sm font-bold text-heading flex items-center gap-1">
-          Category
+          {{'product.form.category' | translate}}
           <span class="text-red-500">*</span>
         </label>
         <div class="relative">
           <select formControlName="category"
             class="appearance-none block w-full px-4 py-3 bg-white border border-default text-heading text-sm rounded-xl focus:ring-4 focus:ring-fg-brand/10 focus:border-fg-brand transition-all duration-200 cursor-pointer">
-            <option value="" disabled>Select a category</option>
+            <option value="" disabled>{{'product.form.selectCategory' | translate}}</option>
             @for(category of categories; track category.id) {
             <option [value]="category.id">{{category.name}}</option>
             }
@@ -68,7 +68,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <span class="text-xs font-medium">Category is required</span>
+          <span class="text-xs font-medium">{{'product.form.validation.categoryRequired' | translate}}</span>
         </div>
         }
       </div>
@@ -76,29 +76,29 @@
       <!-- Price & Quantity Row -->
       <div class="grid grid-cols-2 gap-4">
         <div class="space-y-2">
-          <label class="text-sm font-bold text-heading">Price ($)</label>
+          <label class="text-sm font-bold text-heading">{{'product.form.price' | translate}}</label>
           <input type="number" formControlName="price"
             class="block w-full px-4 py-3 bg-white border border-default text-heading text-sm rounded-xl focus:ring-4 focus:ring-fg-brand/10 focus:border-fg-brand transition-all duration-200"
-            placeholder="0.00">
+            placeholder="{{'product.form.placeholder.price' | translate}}">
           @if(productPrice.touched && productPrice.invalid) {
           <div class="flex items-center gap-1.5 mt-1 text-red-500">
             <span class="text-xs font-medium">
-              @if(productPrice.getError('required')) { Required }
-              @else if(productPrice.getError('min')) { Min $1 }
+              @if(productPrice.getError('required')) { {{'product.form.validation.priceRequired' | translate}} }
+              @else if(productPrice.getError('min')) { {{'product.form.validation.priceMin' | translate}} }
             </span>
           </div>
           }
         </div>
         <div class="space-y-2">
-          <label class="text-sm font-bold text-heading">Quantity</label>
+          <label class="text-sm font-bold text-heading">{{'product.form.quantity' | translate}}</label>
           <input type="number" formControlName="quantity"
             class="block w-full px-4 py-3 bg-white border border-default text-heading text-sm rounded-xl focus:ring-4 focus:ring-fg-brand/10 focus:border-fg-brand transition-all duration-200"
-            placeholder="0">
+            placeholder="{{'product.form.placeholder.quantity' | translate}}">
           @if(productQuantity.touched && productQuantity.invalid) {
           <div class="flex items-center gap-1.5 mt-1 text-red-500">
             <span class="text-xs font-medium">
-              @if(productQuantity.getError('required')) { Required }
-              @else if(productQuantity.getError('min')) { Min 0 }
+              @if(productQuantity.getError('required')) { {{'product.form.validation.quantityRequired' | translate}} }
+              @else if(productQuantity.getError('min')) { {{'product.form.validation.quantityMin' | translate}} }
             </span>
           </div>
           }
@@ -110,14 +110,14 @@
     <div class="mt-10 flex items-center justify-end gap-3">
       <button type="button" (click)="close()"
         class="px-6 py-2.5 text-sm font-bold text-body bg-white border border-default rounded-xl hover:bg-neutral-secondary-medium transition-all duration-200 cursor-pointer">
-        Cancel
+        {{'common.cancel' | translate}}
       </button>
       <button type="submit" [disabled]="productForm.invalid"
         class="px-8 py-2.5 text-sm font-bold text-white bg-fg-brand rounded-xl hover:bg-fg-brand-hover shadow-lg shadow-fg-brand/20 transition-all duration-200 disabled:opacity-50 disabled:shadow-none cursor-pointer flex items-center gap-2">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
         </svg>
-        @if(productEditable()) { Save Changes } @else { Create Product }
+        @if(productEditable()) { {{'product.saveChanges' | translate}} } @else { {{'product.createProduct' | translate}} }
       </button>
     </div>
   </form>

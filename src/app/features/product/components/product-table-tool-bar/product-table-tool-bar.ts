@@ -1,4 +1,5 @@
 import { Component, computed, input, output } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface PageSelectionOption {
   label: string;
@@ -7,7 +8,7 @@ interface PageSelectionOption {
 
 @Component({
   selector: 'app-product-table-tool-bar',
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './product-table-tool-bar.html',
   styleUrl: './product-table-tool-bar.css',
 })
@@ -15,19 +16,19 @@ export class ProductTableToolBar {
 
   pageSelectionOptions: PageSelectionOption[] = [
     {
-      label: "10 per page",
+      label: "product.table.pagination.10perPage",
       value: 10
     },
     {
-      label: "25 per page",
+      label: "product.table.pagination.25perPage",
       value: 25
     },
     {
-      label: "50 per page",
+      label: "product.table.pagination.50perPage",
       value: 50
     },
     {
-      label: "100 per page",
+      label: "product.table.pagination.100perPage",
       value: 100
     }
   ]

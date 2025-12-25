@@ -37,13 +37,13 @@ export class ProductListPage {
 
   addProduct(product: ProductModel) {
     this._productStore.addProduct(product);
-    this._toastService.show('Product added successfully!');
+    this._toastService.show('product.productAdded');
   }
 
   save(product: ProductModel) {
     this._productStore.updateProduct(product);
     this.productEditable.set(undefined);
-    this._toastService.show('Product updated successfully!');
+    this._toastService.show('product.productUpdated');
   }
 
 }

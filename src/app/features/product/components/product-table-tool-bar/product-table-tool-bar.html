@@ -1,7 +1,6 @@
 <div
     class="p-6 border-t border-default bg-neutral-secondary-medium/30 flex flex-col sm:flex-row items-center justify-between gap-4">
-    <p class="text-xs text-body order-2 sm:order-1">Showing <span
-      class="font-semibold text-heading">{{productCount}}</span> products</p>
+    <p class="text-xs text-body order-2 sm:order-1">{{'product.showingProducts' | translate: {count: productCount} }}</p>
       <div class="order-1 sm:order-2">
         <div class="flex items-center gap-4">
           <div class="flex items-center -space-x-px shadow-sm rounded-xl overflow-hidden border border-default">
@@ -35,7 +34,7 @@
               class="appearance-none block w-32 pl-4 pr-10 py-2 bg-white border border-default text-heading text-sm font-medium rounded-xl focus:ring-2 focus:ring-fg-brand/20 focus:border-fg-brand transition-all duration-200 cursor-pointer">
               @for(pageSizeOption of pageSelectionOptions; track pageSizeOption.value) {
               <option [value]="pageSizeOption.value" [selected]="pageSizeOption.value == pageSize()">
-                {{pageSizeOption.label}}
+                {{pageSizeOption.label | translate}}
               </option>
               }
             </select>

@@ -6,6 +6,7 @@ import { ProductTableSearch } from "../product-table-search/product-table-search
 import { ProductTableFilter } from "../product-table-filter/product-table-filter";
 import { categoryMock } from '../../models/product-mock';
 import { ProductModel } from '../../models/product-model';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface ProductTableHeader {
   label: string;
@@ -14,7 +15,7 @@ interface ProductTableHeader {
 
 @Component({
   selector: 'app-product-table',
-  imports: [DatePipe, ProductTableToolBar, ProductTableSearch, ProductTableFilter],
+  imports: [DatePipe, ProductTableToolBar, ProductTableSearch, ProductTableFilter, TranslateModule],
   templateUrl: './product-table.html',
   styleUrl: './product-table.css',
 })
@@ -40,23 +41,23 @@ export class ProductTable {
 
   items: ProductTableHeader[] = [
     {
-      label: "Name",
+      label: "product.table.headers.name",
       key: "name"
     },
     {
-      label: "category",
+      label: "product.table.headers.category",
       key: "categoryId"
     },
     {
-      label: "Price",
+      label: "product.table.headers.price",
       key: "price"
     },
     {
-      label: "Quantity",
+      label: "product.table.headers.quantity",
       key: "quantity"
     },
     {
-      label: "Created At",
+      label: "product.table.headers.createdAt",
       key: "createdAt"
     }
   ]

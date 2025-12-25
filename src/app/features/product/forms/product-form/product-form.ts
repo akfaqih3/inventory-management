@@ -2,10 +2,11 @@ import { Component, input, output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { categoryMock } from '../../models/product-mock';
 import { ProductModel } from '../../models/product-model';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslateModule],
   templateUrl: './product-form.html',
   styleUrl: './product-form.css',
 })

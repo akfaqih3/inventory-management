@@ -1,7 +1,7 @@
 <!-- Mobile Toggle Button -->
 <button type="button"
   class="fixed top-4 left-4 z-50 inline-flex items-center p-2 text-sm text-body bg-white border border-default rounded-lg sm:hidden hover:bg-neutral-tertiary focus:outline-none focus:ring-2 focus:ring-fg-brand transition-all duration-200 shadow-sm cursor-pointer">
-  <span class="sr-only">Open sidebar</span>
+  <span class="sr-only">{{'sidebar.openSidebar' | translate}}</span>
   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
   </svg>
@@ -19,7 +19,7 @@
           d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
       </svg>
     </div>
-    <span class="text-xl font-bold text-heading tracking-tight">Inventory</span>
+    <span class="text-xl font-bold text-heading tracking-tight">{{'app.title' | translate}}</span>
   </div>
 
   <!-- Navigation -->
@@ -36,7 +36,7 @@
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M13.5 3c-.169 0-.334.014-.5.025V11h7.975c.011-.166.025-.331.025-.5A7.5 7.5 0 0 0 13.5 3Z" />
           </svg>
-          <span class="ms-3">{{item.label}}</span>
+          <span class="ms-3">{{item.label | translate}}</span>
         </a>
       </li>
       }
@@ -46,8 +46,8 @@
   <!-- Footer -->
   <div class="p-4 border-t border-default bg-neutral-secondary-medium/30">
     <div class="p-4 bg-white rounded-2xl border border-default/50 shadow-sm">
-      <p class="text-xs font-bold text-heading mb-1">Inventory Management</p>
-      <p class="text-[11px] text-body leading-relaxed">Copyright © 2025 Inventory Management. All rights reserved.</p>
+      <p class="text-xs font-bold text-heading mb-1">{{'app.title' | translate}}</p>
+      <p class="text-[11px] text-body leading-relaxed">{{'sidebar.copyright' | translate}}</p>
     </div>
   </div>
 </aside>
