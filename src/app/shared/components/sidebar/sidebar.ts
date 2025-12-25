@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { LanguageService } from '../../../core/i18n/service/language.service';
 
 interface SidebarItem {
   label: string;
@@ -14,6 +15,9 @@ interface SidebarItem {
   styleUrl: './sidebar.css',
 })
 export class Sidebar {
+  private languageService = inject(LanguageService);
+  
+  isRTL = this.languageService.isRTL;
 
   items: SidebarItem[] = [
     {
@@ -27,4 +31,8 @@ export class Sidebar {
       route: "/products"
     },
   ]
+
+  toggleLanguage() {
+    this.languageService.toggleLanguage();
+  }
 }

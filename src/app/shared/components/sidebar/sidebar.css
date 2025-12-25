@@ -1,0 +1,42 @@
+/* RTL Support for Sidebar */
+[dir="rtl"] .sidebar-item {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .sidebar-icon {
+  margin-left: 0.75rem;
+  margin-right: 0;
+}
+
+[dir="ltr"] .sidebar-icon {
+  margin-right: 0.75rem;
+  margin-left: 0;
+}
+
+/* Smooth transitions for sidebar positioning */
+.sidebar-container {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 640px) {
+  [dir="rtl"] .sidebar-mobile-toggle {
+    right: 1rem;
+    left: auto;
+  }
+  
+  [dir="ltr"] .sidebar-mobile-toggle {
+    left: 1rem;
+    right: auto;
+  }
+}
+
+/* Language toggle button styling */
+.language-toggle {
+  transition: all 0.2s ease-in-out;
+}
+
+.language-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
