@@ -27,4 +27,22 @@
         @apply bg-slate-50 text-slate-900 antialiased;
         font-family: 'Inter', system-ui, -apple-system, sans-serif;
     }
+}/*
+ Stock Status Directive Styles */
+@layer components {
+    .stock-in-stock {
+        @apply bg-green-50 border-l-4 border-green-500;
+    }
+    
+    .stock-low {
+        @apply bg-yellow-50 border-l-4 border-yellow-500;
+    }
+    
+    .stock-critical {
+        @apply bg-orange-50 border-l-4 border-orange-500;
+    }
+    
+    .stock-out-of-stock {
+        @apply bg-red-50 border-l-4 border-red-500;
+    }
 }

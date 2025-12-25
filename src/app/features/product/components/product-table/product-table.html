@@ -13,7 +13,7 @@
     <div class="overflow-x-auto"> <table class="w-full table-fixed text-sm text-left rtl:text-right text-body">
 
       <colgroup>
-        <col class="w-1/4"> <col class="w-32">  <col class="w-24">  <col class="w-24">  <col class="w-32">  <col class="w-28">  </colgroup>
+        <col class="w-1/5"> <col class="w-28">  <col class="w-20">  <col class="w-20">  <col class="w-24">  <col class="w-28">  <col class="w-28">  </colgroup>
 
       <thead class="text-xs font-semibold text-heading uppercase tracking-wider bg-neutral-secondary-medium border-b border-default">
         <tr>
@@ -33,7 +33,7 @@
 
       <tbody class="divide-y divide-default">
         @for(product of products(); track product.id) {
-        <tr class="hover:bg-neutral-secondary-medium transition-colors duration-150 group">
+        <tr class="hover:bg-neutral-secondary-medium transition-colors duration-150 group" [appStockStatus]="product.quantity">
           <td class="px-6 py-4 font-medium text-heading truncate overflow-hidden" [title]="product.name">
             {{product.name}}
           </td>
@@ -52,6 +52,9 @@
                 [class.bg-red-500]="product.quantity === 0"></div>
               {{product.quantity}}
             </div>
+          </td>
+          <td class="px-6 py-4">
+            <app-stock-status [quantity]="product.quantity"></app-stock-status>
           </td>
           <td class="px-6 py-4 text-xs whitespace-nowrap">
             {{ product.createdAt | date:'mediumDate' }}

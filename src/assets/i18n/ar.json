@@ -60,6 +60,7 @@
         "category": "الفئة",
         "price": "السعر",
         "quantity": "الكمية",
+        "status": "الحالة",
         "createdAt": "تاريخ الإنشاء"
       },
       "pagination": {

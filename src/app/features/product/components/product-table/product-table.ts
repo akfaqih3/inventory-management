@@ -7,6 +7,8 @@ import { ProductTableFilter } from "../product-table-filter/product-table-filter
 import { categoryMock } from '../../models/product-mock';
 import { ProductModel } from '../../models/product-model';
 import { TranslateModule } from '@ngx-translate/core';
+import { StockStatusDirective } from '../../../../shared/directives/stock-status.directive';
+import { StockStatusComponent } from '../../../../shared/components/stock-status/stock-status.component';
 
 interface ProductTableHeader {
   label: string;
@@ -15,7 +17,7 @@ interface ProductTableHeader {
 
 @Component({
   selector: 'app-product-table',
-  imports: [DatePipe, ProductTableToolBar, ProductTableSearch, ProductTableFilter, TranslateModule],
+  imports: [DatePipe, ProductTableToolBar, ProductTableSearch, ProductTableFilter, TranslateModule, StockStatusDirective, StockStatusComponent],
   templateUrl: './product-table.html',
   styleUrl: './product-table.css',
 })
@@ -55,6 +57,10 @@ export class ProductTable {
     {
       label: "product.table.headers.quantity",
       key: "quantity"
+    },
+    {
+      label: "product.table.headers.status",
+      key: "quantity" // Using quantity key for status column
     },
     {
       label: "product.table.headers.createdAt",

@@ -60,6 +60,7 @@
         "category": "Category",
         "price": "Price",
         "quantity": "Quantity",
+        "status": "Status",
         "createdAt": "Created At"
       },
       "pagination": {
