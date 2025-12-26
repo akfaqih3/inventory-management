@@ -4,7 +4,8 @@
   <div class="px-8 py-6 bg-neutral-secondary-medium border-b border-default flex justify-between items-center">
     <div>
       <h3 class="text-xl font-bold text-heading">
-        @if(productEditable()) { {{'product.editProduct' | translate}} } @else { {{'product.addNewProduct' | translate}} }
+        @if(productEditable()) { {{'product.editProduct' | translate}} } @else { {{'product.addNewProduct' | translate}}
+        }
       </h3>
       <p class="text-xs text-body mt-1">{{'product.fillDetails' | translate}}</p>
     </div>
@@ -51,7 +52,8 @@
         <div class="relative">
           <select formControlName="category"
             class="appearance-none block w-full px-4 py-3 border border-default text-heading text-sm rounded-xl focus:ring-4 focus:ring-fg-brand/10 focus:border-fg-brand transition-all duration-200 cursor-pointer">
-            <option value="" class="bg-neutral-primary-soft" disabled>{{'product.form.selectCategory' | translate}}</option>
+            <option value="" class="bg-neutral-primary-soft" disabled>{{'product.form.selectCategory' | translate}}
+            </option>
             @for(category of categories; track category.id) {
             <option [value]="category.id" class=" bg-neutral-primary-soft ">{{category.name}}</option>
             }
@@ -74,7 +76,7 @@
       </div>
 
       <!-- Price & Quantity Row -->
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div class="space-y-2">
           <label class="text-sm font-bold text-heading">{{'product.form.price' | translate}}</label>
           <input type="number" formControlName="price"
@@ -107,17 +109,19 @@
     </div>
 
     <!-- Footer Actions -->
-    <div class="mt-10 flex items-center justify-end gap-3">
-      <button type="button" (click)="close()"
-        class="px-6 py-2.5 text-sm font-bold text-body  border border-default rounded-xl hover:bg-neutral-secondary-medium transition-all duration-200 cursor-pointer">
-        {{'common.cancel' | translate}}
-      </button>
+    <div class="mt-10 flex flex-col sm:flex-row items-center justify-end gap-2">
+
       <button type="submit" [disabled]="productForm.invalid"
-        class="px-8 py-2.5 text-sm font-bold text-white bg-fg-brand rounded-xl hover:bg-fg-brand-hover shadow-lg shadow-fg-brand/20 transition-all duration-200 disabled:opacity-50 disabled:shadow-none cursor-pointer flex items-center gap-2">
+        class="px-8 py-2.5 w-full text-sm font-bold text-white bg-fg-brand rounded-xl hover:bg-fg-brand-hover shadow-lg shadow-fg-brand/20 transition-all duration-200 disabled:opacity-50 disabled:shadow-none cursor-pointer flex items-center gap-2 justify-center">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
         </svg>
-        @if(productEditable()) { {{'product.saveChanges' | translate}} } @else { {{'product.createProduct' | translate}} }
+        @if(productEditable()) { {{'product.saveChanges' | translate}} } @else { {{'product.createProduct' | translate}}
+        }
+      </button>
+      <button type="button" (click)="close()"
+        class="px-6 py-2.5 text-sm font-bold text-body w-full  border border-default rounded-xl hover:bg-neutral-secondary-medium transition-all duration-200 cursor-pointer">
+        {{'common.cancel' | translate}}
       </button>
     </div>
   </form>
