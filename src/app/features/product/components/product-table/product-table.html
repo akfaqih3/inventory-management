@@ -52,10 +52,14 @@
           <td class="px-6 py-4 text-xs text-heading whitespace-nowrap">
             {{ product.createdAt | date:'mediumDate' }}
           </td>
-          <td class="px-6 py-4 text-right">
+          <td class="px-6 py-4 text-right flex items-center justify-end gap-2">
             <button (click)="editProduct(product.id)"
               class="inline-flex items-center cursor-pointer gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-fg-brand hover:bg-fg-brand/10 transition-colors">
               {{'common.edit' | translate}}
+            </button>
+            <button (click)="deleteProduct(product.id)"
+              class="inline-flex items-center cursor-pointer gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-red-500 hover:bg-red-500/10 transition-colors">
+              {{'common.delete' | translate}}
             </button>
           </td>
         </tr>

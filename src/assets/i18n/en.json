@@ -13,7 +13,9 @@
     "success": "Success",
     "error": "Error",
     "warning": "Warning",
-    "info": "Info"
+    "info": "Info",
+    "confirm": "Confirm",
+    "confirmMessage": "Are you sure you want to proceed?"
   },
   "navigation": {
     "dashboard": "Dashboard",
@@ -28,6 +30,8 @@
     "addNewProduct": "Add New Product",
     "productAdded": "Product added successfully!",
     "productUpdated": "Product updated successfully!",
+    "productDeleted": "Product deleted successfully!",
+    "deleteConfirm": "Are you sure you want to delete this product?",
     "fillDetails": "Fill in the details below to update your inventory",
     "searchProducts": "Search products...",
     "showingProducts": "Showing {{count}} products",
@@ -75,7 +79,6 @@
       }
     }
   },
-
   "sidebar": {
     "openSidebar": "Open sidebar",
     "copyright": "Copyright © 2025 Inventory Management. All rights reserved."

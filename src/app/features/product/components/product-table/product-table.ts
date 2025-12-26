@@ -39,6 +39,7 @@ export class ProductTable {
   activeSortOrder = this._productStore.sortOrder;
 
   productEditable = output<ProductModel>();
+  productDeleted = output<number>();
 
 
   items: ProductTableHeader[] = [
@@ -73,6 +74,10 @@ export class ProductTable {
     if (product) {
       this.productEditable.emit(product);
     }
+  }
+
+  deleteProduct(productId: number) {
+    this.productDeleted.emit(productId);
   }
 
   searchInputChanged(e: any) {
