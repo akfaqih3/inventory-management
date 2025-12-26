@@ -30,7 +30,7 @@
     "productUpdated": "تم تحديث المنتج بنجاح!",
     "fillDetails": "املأ التفاصيل أدناه لتحديث مخزونك",
     "searchProducts": "البحث في المنتجات...",
-    "showingProducts": "عرض {count} منتج",
+    "showingProducts": "عرض {{count}} منتج",
     "createProduct": "إنشاء منتج",
     "saveChanges": "حفظ التغييرات",
     "form": {
@@ -60,6 +60,7 @@
         "category": "الفئة",
         "price": "السعر",
         "quantity": "الكمية",
+        "status": "الحالة",
         "createdAt": "تاريخ الإنشاء"
       },
       "pagination": {

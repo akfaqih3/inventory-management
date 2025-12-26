@@ -22,6 +22,7 @@ export class ProductListPage {
 
 
   openForm() {
+    this.productEditable.set(undefined);
     this.isFormOpen.set(true);
   }
 

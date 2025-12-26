@@ -30,7 +30,7 @@
     "productUpdated": "Product updated successfully!",
     "fillDetails": "Fill in the details below to update your inventory",
     "searchProducts": "Search products...",
-    "showingProducts": "Showing {count} products",
+    "showingProducts": "Showing {{count}} products",
     "createProduct": "Create Product",
     "saveChanges": "Save Changes",
     "form": {
@@ -60,6 +60,7 @@
         "category": "Category",
         "price": "Price",
         "quantity": "Quantity",
+        "status": "Status",
         "createdAt": "Created At"
       },
       "pagination": {

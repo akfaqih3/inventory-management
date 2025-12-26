@@ -1,6 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { LanguageService } from '../../../core/i18n/service/language.service';
+import { ThemeToggleComponent } from '../theme-toggle/theme-toggle.component';
+import { CommonModule } from '@angular/common';
 
 interface SidebarItem {
   label: string;
@@ -10,14 +12,15 @@ interface SidebarItem {
 
 @Component({
   selector: 'app-sidebar',
-  imports: [TranslateModule],
+  imports: [TranslateModule, ThemeToggleComponent, CommonModule],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css',
 })
 export class Sidebar {
   private languageService = inject(LanguageService);
-  
+
   isRTL = this.languageService.isRTL;
+  isOpen = signal(false);
 
   items: SidebarItem[] = [
     {
@@ -34,5 +37,9 @@ export class Sidebar {
 
   toggleLanguage() {
     this.languageService.toggleLanguage();
+  }
+
+  toggleSidebar() {
+    this.isOpen.update(v => !v);
   }
 }

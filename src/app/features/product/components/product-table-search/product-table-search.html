@@ -7,13 +7,14 @@
         </svg>
     </div>
     <input #search type="text" (input)="searchChanged($event)"
-        class="block w-full pl-10 pr-4 py-2.5 bg-neutral-secondary-medium border border-default text-heading text-sm rounded-xl focus:ring-2 focus:ring-fg-brand/20 focus:border-fg-brand focus:bg-white transition-all duration-200 placeholder:text-slate-400"
+        class="block w-full pl-10 pr-4 py-2.5 bg-neutral-secondary-medium border border-default text-heading text-sm rounded-xl focus:ring-2 focus:ring-fg-brand/20 focus:border-fg-brand focus:bg-neutral-primary-soft transition-all duration-200 placeholder:text-slate-400"
         placeholder="{{'product.searchProducts' | translate}}">
 
     <!-- Clear search button -->
-    <button [class.hidden]="search.value.length === 0" (click)="clearSearchInput()" class="cursor-pointer mx-2 absolute right-0 top-1/2 transform -translate-y-1/2 text-body text-sm" type="button" >
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-      </button>
+    <button [class.hidden]="search.value.length === 0" (click)="clearSearchInput()"
+        class="cursor-pointer mx-2 absolute right-0 top-1/2 transform -translate-y-1/2 text-body text-sm" type="button">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </button>
 </div>
