@@ -1,4 +1,4 @@
-import { Component, inject, signal, Signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ProductTable } from "../../components/product-table/product-table";
 import { ProductForm } from "../../forms/product-form/product-form";
 import { ProductStore } from '../../store/product-store';
@@ -6,9 +6,11 @@ import { ProductModel } from '../../models/product-model';
 import { ToastService } from '../../../../core/services/toast.service';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { ConfirmModalComponent } from '../../../../shared/components/confirm-modal/confirm-modal';
+
 @Component({
   selector: 'app-product-list-page',
-  imports: [ProductTable, ProductForm,TranslateModule],
+  imports: [ProductTable, ProductForm, TranslateModule, ConfirmModalComponent],
   templateUrl: './product-list-page.html',
   styleUrl: './product-list-page.css',
 })
@@ -19,6 +21,7 @@ export class ProductListPage {
   isFormOpen = signal<boolean>(false);
 
   productEditable = signal<ProductModel | undefined>(undefined);
+  productIdToDelete = signal<number | undefined>(undefined);
 
 
   openForm() {
@@ -33,6 +36,23 @@ export class ProductListPage {
   editProduct(product: ProductModel) {
     this.productEditable.set(product);
     this.isFormOpen.set(true);
+  }
+
+  confirmDelete(productId: number) {
+    this.productIdToDelete.set(productId);
+  }
+
+  cancelDelete() {
+    this.productIdToDelete.set(undefined);
+  }
+
+  deleteProduct() {
+    const id = this.productIdToDelete();
+    if (id !== undefined) {
+      this._productStore.removeProduct(id);
+      this._toastService.show('product.productDeleted');
+      this.productIdToDelete.set(undefined);
+    }
   }
 
 

@@ -13,7 +13,9 @@
     "success": "نجح",
     "error": "خطأ",
     "warning": "تحذير",
-    "info": "معلومات"
+    "info": "معلومات",
+    "confirm": "تأكيد",
+    "confirmMessage": "هل أنت متأكد أنك تريد الاستمرار؟"
   },
   "navigation": {
     "dashboard": "لوحة التحكم",
@@ -28,6 +30,8 @@
     "addNewProduct": "إضافة منتج جديد",
     "productAdded": "تم إضافة المنتج بنجاح!",
     "productUpdated": "تم تحديث المنتج بنجاح!",
+    "productDeleted": "تم حذف المنتج بنجاح!",
+    "deleteConfirm": "هل أنت متأكد أنك تريد حذف هذا المنتج؟",
     "fillDetails": "املأ التفاصيل أدناه لتحديث مخزونك",
     "searchProducts": "البحث في المنتجات...",
     "showingProducts": "عرض {{count}} منتج",
@@ -75,7 +79,6 @@
       }
     }
   },
-
   "sidebar": {
     "openSidebar": "فتح الشريط الجانبي",
     "copyright": "حقوق الطبع والنشر © 2025 إدارة المخزون. جميع الحقوق محفوظة."
