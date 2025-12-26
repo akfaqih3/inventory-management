@@ -1,49 +1,48 @@
 <div
-    class="p-6 border-t border-default bg-neutral-secondary-medium/30 flex flex-col sm:flex-row items-center justify-between gap-4">
-    <p class="text-xs text-body order-2 sm:order-1">{{'product.showingProducts' | translate: {count: productCount} }}</p>
-      <div class="order-1 sm:order-2">
-        <div class="flex items-center gap-4">
-          <div class="flex items-center -space-x-px shadow-sm rounded-xl overflow-hidden border border-default">
-            <button (click)="previousPage()" [disabled]="currentPage() === 1"
-              class="px-4  cursor-pointer py-2 text-sm font-medium text-body bg-white hover:bg-neutral-secondary-medium transition-colors border-r border-default disabled:opacity-50">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
+  class="p-6 border-t border-default bg-neutral-secondary-medium/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+  <p class="text-xs text-body order-2 sm:order-1">{{'product.showingProducts' | translate:{count: productCount} }}</p>
+  <div class="order-1 sm:order-2">
+    <div class="flex items-center gap-4">
+      <div class="flex items-center -space-x-px shadow-sm rounded-xl overflow-hidden border border-default">
+        <button (click)="previousPage()" [disabled]="currentPage() === 1"
+          class="px-4  cursor-pointer py-2 text-sm font-medium text-body bg-neutral-primary-soft hover:bg-neutral-secondary-medium transition-colors border-r border-default disabled:opacity-50">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="isRTL() ? 'M9 5l7 7-7 7' : 'M15 19l-7-7 7-7'" />
+          </svg>
+        </button>
 
-            @for(item of pageArray; track item) {
-            <button (click)="selectPage(item)" [class.bg-fg-brand]="item === currentPage()"
-              [class.text-white]="item === currentPage()" [class.bg-white]="item !== currentPage()"
-              [class.text-body]="item !== currentPage()"
-              [class.hover:bg-neutral-secondary-medium]="item !== currentPage()"
-              class="px-4 cursor-pointer py-2 text-sm font-medium  transition-colors border-r border-default last:border-r-0">
-              {{item}}
-            </button>
-            }
+        @for(item of pageArray; track item) {
+        <button (click)="selectPage(item)" [class.bg-fg-brand]="item === currentPage()"
+          [class.text-white]="item === currentPage()" [class.bg-neutral-primary-soft]="item !== currentPage()"
+          [class.text-body]="item !== currentPage()" [class.hover:bg-neutral-secondary-medium]="item !== currentPage()"
+          class="px-4 cursor-pointer py-2 text-sm font-medium  transition-colors border-r border-default last:border-r-0">
+          {{item}}
+        </button>
+        }
 
-            <button (click)="nextPage()" [disabled]="currentPage() === pageCount()"
-              class="px-4 cursor-pointer py-2 text-sm font-medium text-body bg-white hover:bg-neutral-secondary-medium transition-colors disabled:opacity-50">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
+        <button (click)="nextPage()" [disabled]="currentPage() === pageCount()"
+          class="px-4 cursor-pointer py-2 text-sm font-medium text-body bg-neutral-primary-soft hover:bg-neutral-secondary-medium transition-colors disabled:opacity-50">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="isRTL() ? 'M15 19l-7-7 7-7' : 'M9 5l7 7-7 7'" />
+          </svg>
+        </button>
+      </div>
 
-          <div class="relative">
-            <select (change)="selectPageSize($event)"
-              class="appearance-none block w-32 pl-4 pr-10 py-2 bg-white border border-default text-heading text-sm font-medium rounded-xl focus:ring-2 focus:ring-fg-brand/20 focus:border-fg-brand transition-all duration-200 cursor-pointer">
-              @for(pageSizeOption of pageSelectionOptions; track pageSizeOption.value) {
-              <option [value]="pageSizeOption.value" [selected]="pageSizeOption.value == pageSize()">
-                {{pageSizeOption.label | translate}}
-              </option>
-              }
-            </select>
-            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-body">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </div>
+      <div class="relative">
+        <select (change)="selectPageSize($event)"
+          class="appearance-none pr-8 pl-2 block w-32 py-2 bg-neutral-primary-soft border border-default text-heading text-sm font-medium rounded-xl focus:ring-2 focus:ring-fg-brand/20 focus:border-fg-brand transition-all duration-200 cursor-pointer">
+          @for(pageSizeOption of pageSelectionOptions; track pageSizeOption.value) {
+          <option [value]="pageSizeOption.value" [selected]="pageSizeOption.value == pageSize()">
+            {{pageSizeOption.label | translate}}
+          </option>
+          }
+        </select>
+        <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-body">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
         </div>
       </div>
+    </div>
+  </div>
 </div>

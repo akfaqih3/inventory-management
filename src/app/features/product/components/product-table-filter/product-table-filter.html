@@ -1,6 +1,6 @@
 <div class="relative group">
   <button type="button"
-    class="shrink-0 cursor-pointer inline-flex items-center justify-center px-4 py-2.5 text-sm font-semibold text-heading bg-white border border-default rounded-xl hover:bg-neutral-secondary-medium focus:ring-2 focus:ring-fg-brand/20 transition-all duration-200">
+    class="shrink-0 cursor-pointer inline-flex items-center justify-center px-4 py-2.5 text-sm font-semibold text-heading bg-neutral-primary-soft border border-default rounded-xl hover:bg-neutral-secondary-medium focus:ring-2 focus:ring-fg-brand/20 transition-all duration-200">
     <svg class="w-4 h-4 mr-2 text-body" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
         d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
@@ -14,29 +14,27 @@
 
   <!-- Dropdown menu -->
   <div
-  class="absolute mt-2 min-w-48 max-w-xs w-max bg-white border border-default rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden"
-  [class.right-0]="!isRTL()"
-  [class.left-0]="isRTL()">
+    class="absolute mt-2 min-w-48 max-w-xs w-max bg-neutral-primary-soft border border-default rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden"
+    [class.right-0]="!isRTL()" [class.left-0]="isRTL()">
 
-  <div class="p-2" [dir]="isRTL() ? 'rtl' : 'ltr'">
-    <p class="px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider text-start">
-      {{'product.table.filter.categories' | translate}}
-    </p>
+    <div class="p-2" [dir]="isRTL() ? 'rtl' : 'ltr'">
+      <p class="px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider text-start">
+        {{'product.table.filter.categories' | translate}}
+      </p>
 
-    <ul class="space-y-1">
-      @for(category of categories(); track category.id) {
-      <li>
-        <button (click)="selectCategory(category.id)"
-                aria-label="Select category"
-                class="w-full cursor-pointer flex items-center gap-2 px-3 py-2 text-sm text-body rounded-lg hover:bg-neutral-secondary-medium hover:text-fg-brand transition-colors whitespace-nowrap text-start">
+      <ul class="space-y-1">
+        @for(category of categories(); track category.id) {
+        <li>
+          <button (click)="selectCategory(category.id)" aria-label="Select category"
+            class="w-full cursor-pointer flex items-center gap-2 px-3 py-2 text-sm text-body rounded-lg hover:bg-neutral-secondary-medium hover:text-fg-brand transition-colors whitespace-nowrap text-start">
 
-          <input type="checkbox" [checked]="categoriesSelected()?.includes(category.id)" class="shrink-0">
-          <span>{{category.name}}</span>
+            <input type="checkbox" [checked]="categoriesSelected()?.includes(category.id)" class="shrink-0">
+            <span>{{category.name}}</span>
 
-        </button>
-      </li>
-      }
-    </ul>
+          </button>
+        </li>
+        }
+      </ul>
+    </div>
   </div>
-</div>
 </div>

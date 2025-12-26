@@ -19,7 +19,7 @@ import { StockStatusDirective, StockStatusInfo } from '../../directives/stock-st
     .status-low { color: #a16207; }
     .status-critical { color: #c2410c; }
     .status-out-of-stock { color: #dc2626; }
-    
+
     .indicator-in-stock { background-color: #22c55e; }
     .indicator-low { background-color: #eab308; }
     .indicator-critical { background-color: #f97316; }

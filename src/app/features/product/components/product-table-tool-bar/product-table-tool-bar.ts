@@ -1,5 +1,6 @@
-import { Component, computed, input, output } from '@angular/core';
+import { Component, computed, inject, input, output } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { LanguageService } from '../../../../core/i18n/service/language.service';
 
 interface PageSelectionOption {
   label: string;
@@ -13,6 +14,9 @@ interface PageSelectionOption {
   styleUrl: './product-table-tool-bar.css',
 })
 export class ProductTableToolBar {
+  private readonly _languageService = inject(LanguageService);
+
+  isRTL = this._languageService.isRTL;
 
   pageSelectionOptions: PageSelectionOption[] = [
     {
