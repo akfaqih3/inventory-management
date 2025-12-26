@@ -1,4 +1,15 @@
-# InventoryManagement
+# Inventory Management System
+
+| Light Mode | Dark Mode |
+|------------|-----------|
+| ![Light Mode](./screenshot.png) | ![Dark Mode](./screenshot-dark.png) |
+
+A modern, responsive Inventory Management System built with Angular 21, featuring:
+- **Dark Mode Support**: Seamlessly toggle between light and dark themes.
+- **Multi-language Support**: Full Arabic and English support with RTL/LTR layout adjustment.
+- **Product Management**: Add, edit, and track inventory items with real-time status indicators.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+- **Modern UI**: Built with Tailwind CSS for a premium look and feel.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.0.
 
